@@ -168,13 +168,19 @@ nav {
   mix-blend-mode: difference;
 }
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
   text-decoration: none;
+}
+.nav-logo-img {
+  height: 28px;
+  width: auto;
+  filter: invert(1);
+  mix-blend-mode: normal;
+}
+.footer-logo-img {
+  height: 20px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 .nav-links {
   display: flex;
@@ -583,7 +589,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Krist Pjetraj</a>
+  <a href="#" class="nav-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB4CAYAAAAnrQZhAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAFOElEQVR42u2cMWgbSRSG/9mZXUko6VKkUmm3KuwuhVuDDIGQuLAxBjUKsTtDuhRJ4RTBEgRchqQNpFIgDqQQqLELWza4M6kiVLhJDHaQtbMzV9zNYh2BXM4rrSz9H6j0jjTfvrfz3sxaALAgY4fHKaBYQrGEYgnFEoqlWE4BxRKKJRRLKJZQLMVyCiiWUCyhWEKxhGIpllNAsYRiCcUSiiUUS7GcAoolFEsollAsoViK5RRQLKFYQrGEYgnFUiyngGIJxRKKJRRLKJZiOQXjiUpzcCEEPG9491YURRBCQEqZ6HWttX1jjAICKfyTTKUUrLVDnwQhRJ+EQeD7Pqy1EEJAaz3w8UYuYo0xmJmZwfr6OsIwHEjkukk1xiAIAnz8+BGdTgdLS0s4Pz9PbEytNXK5HI6OjvDmzRsEQQAhROpRa4f5EULYIAgsAPvgwQM7TIrFot3Y2BjoGE+fPrUAbDabtUIIO+z5dZ+hR6y1No6kbrcLrTWMMfEdntSdbq2FMQZRFCGTyaBer+Pw8BDz8/PQWkNrDaVUYlnB8fLlSwRBgBcvXkBKmdozV6WVhq8+bwch1o3jnue1Wi2+tlJqYIuoy8tLPH/+HJlMBs+ePYPneX2/l+VOQs8+KSU+ffqEZrMZR/GvIi2pxZlbGT958gR37tzpu2kpNuGFU61WG1rUuCxwcXEx1FJuYsS6lfCXL1/QaDQQBMHAIvXfYqWUcdlDsQOqWavVKowxqUYPxSaUgqMogud5aDQa+Pz5M4IgSGUBQ7EJSjXGxBKr1WpcXlHsDU+/URRBKYXd3V3s7OzA9/24R0yxNzhihRAQQuDVq1dxq3LSpI6d2CiKIKXEwcEB6vU6hBDo9XoTl4bHMhV7noetrS30ej1IKftamBR7Q+tWKSX29vbw4cOHVPu0FJvw8xUAvn37hm63G0drWt+DYpP6If8020ulEorF4sD2eG+K4LERK4SAMQbZbBZra2vxCjktqUop9oqTwqXfR48eYWpqKl4lD1qwMSaOUK01hBD48eMHfv78SbFJEYYhbt++jXK5DODvM0hJinWr7KsdLSe21+shCAJ0Oh0sLi7i7OxsKOesJqbcsdZiZWUFhUIhLnuSHOPqx/M8SCnj3aR2u41SqYT9/f3UFnBjGbFSSmitcffuXayuria60f2rSDXGxOn369evuH//PlqtFrLZbKqNETVuYt2RF2styuUytre38f3792tFrXtWv337Fq9fv0Yul0MYhn2rX6UU2u022u02pJTodrupzsPYiXWlTxRFKBQKWF5eRq1Wg+/71y5dTk9P0Wq1fpsxRqExMvYb7ZVKBbdu3YLW+trX9H0fnuchl8vFJyWUUvB9H0EQQCk1Mt2usRXreR601piensbDhw9jsdepLV2trLVGFEWIoghaa4RhiF6vN1ItzIk4L1KpVJDL5ca+2zQxYj3PQxiGmJ2dxcLCwkTty6b+tp1Lay5FJn1g3F378ePHeP/+fZxC/yRtuhMY7m9uwg2i0hLqFiNKqURetfgdc3NzuHfvXnyI/E/KH/f98vn8yKXckRLrGvQnJyfY3NyMC/xB4V71yOfzOD4+xrt379Dtdv/zQsoYg0wmg2azmVqL8I+DBym8H+smNI3OzHXFuJblqMtNRezVSR7m1pZr1v/fLtTVXRxGLGG5QyiWUCzFEoolFEsollAsoViKJRRLKJZQLKFYQrEUSyiWUCyhWEKxhGIpllAsoVhCsYRiCcVSLKFYQrGEYgnFEoqlWEKxhGIJxRKKJRRLsWSM+Au7d3m/88XKFQAAAABJRU5ErkJggg==" alt="KP" class="nav-logo-img"></a>
   <ul class="nav-links">
     <li><a href="#about">Über mich</a></li>
     <li><a href="#services">Angebot</a></li>
@@ -737,7 +743,7 @@ footer {
 <!-- FOOTER -->
 <footer class="grid-wrapper">
   <div class="footer-grid">
-    <span class="footer-copy">&copy; 2026 Krist Pjetraj, Zürich</span>
+    <span class="footer-copy"><img src="data:image/png;base64,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" alt="KP" class="footer-logo-img"> &copy; 2026 Krist Pjetraj, Zürich</span>
     <ul class="footer-links">
       <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="mailto:krist@pjetraj.com">Email</a></li>
