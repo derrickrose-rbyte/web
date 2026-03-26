@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krist Pjetraj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Suisse+Int'l:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'SystemSans';
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FFFFFF;
+  --black: #0A0A0A;
+  --gray-100: #F5F5F3;
+  --gray-200: #EBEBEA;
+  --gray-300: #D4D4D0;
+  --gray-500: #8A8A85;
+  --gray-600: #6B6B66;
+  --gray-700: #4A4A47;
+  --red: #E03C31;
+
+  --font-display: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+  --font-body: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+
+  --grid-margin: clamp(24px, 5vw, 80px);
+  --grid-gutter: clamp(16px, 2vw, 32px);
+  --section-gap: clamp(100px, 15vw, 200px);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* =============================================
+   GRID SYSTEM
+   ============================================= */
+.grid-wrapper {
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 var(--grid-gutter);
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.t-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+.t-subhead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 2.5vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.t-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: var(--gray-700);
+}
+.t-body-lg {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.65;
+  color: var(--gray-700);
+}
+.t-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(64px, 8vw, 96px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--gray-200);
+}
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+.r {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.r.v {
+  opacity: 1;
+  transform: translateY(0);
+}
+.r-d1 { transition-delay: 0.08s; }
+.r-d2 { transition-delay: 0.16s; }
+.r-d3 { transition-delay: 0.24s; }
+.r-d4 { transition-delay: 0.32s; }
+/* =============================================
+   NAV
+   ============================================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px var(--grid-margin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.nav-links a:hover {
+  opacity: 0.5;
+}
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(60px, 10vw, 120px);
+  position: relative;
+}
+.hero .grid {
+  align-items: end;
+}
+.hero-title {
+  grid-column: 1 / -1;
+  margin-bottom: 48px;
+}
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+}
+.hero-title .line span {
+  display: inline-block;
+  animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: var(--d, 0s);
+  transform: translateY(110%);
+}
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+.hero-meta {
+  grid-column: 1 / 6;
+}
+.hero-meta p {
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 300;
+  color: var(--gray-600);
+  line-height: 1.6;
+  max-width: 380px;
+}
+.hero-cta-area {
+  grid-column: 9 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.hero-rule {
+  grid-column: 1 / -1;
+  height: 2px;
+  background: var(--black);
+  margin-bottom: 32px;
+  transform-origin: left;
+  animation: ruleGrow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+  transform: scaleX(0);
+}
+@keyframes ruleGrow {
+  to { transform: scaleX(1); }
+}
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.btn-primary {
+  padding: 16px 36px;
+  background: var(--black);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gray-700);
+}
+.btn-ghost {
+  color: var(--black);
+  padding: 8px 0;
+  border-bottom: 1.5px solid var(--black);
+}
+.btn-ghost:hover {
+  color: var(--gray-500);
+  border-color: var(--gray-500);
+}
+.btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+.btn:hover svg {
+  transform: translateX(4px);
+}
+/* =============================================
+   SECTIONS
+   ============================================= */
+section {
+  padding-top: var(--section-gap);
+}
+.section-rule {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: var(--gray-300);
+  margin-bottom: clamp(32px, 5vw, 60px);
+}
+.section-label-col {
+  grid-column: 1 / 4;
+}
+.section-content-col {
+  grid-column: 5 / 11;
+}
+.section-content-wide {
+  grid-column: 4 / 12;
+}
+/* =============================================
+   ABOUT
+   ============================================= */
+.about-text p {
+  margin-bottom: 24px;
+}
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+.about-text strong {
+  font-weight: 500;
+  color: var(--black);
+}
+/* =============================================
+   SERVICES
+   ============================================= */
+.service-item {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 var(--grid-gutter);
+  padding: clamp(28px, 4vw, 48px) 0;
+  border-bottom: 1px solid var(--gray-300);
+  position: relative;
+  transition: background 0.3s;
+}
+.service-item:first-of-type {
+  border-top: 1px solid var(--gray-300);
+}
+.service-item:hover {
+  background: var(--gray-100);
+  margin-left: calc(-1 * var(--grid-margin));
+  margin-right: calc(-1 * var(--grid-margin));
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+.service-num {
+  grid-column: 1 / 2;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--gray-500);
+  padding-top: 4px;
+}
+.service-name {
+  grid-column: 2 / 6;
+  align-self: start;
+}
+.service-desc {
+  grid-column: 6 / 11;
+  align-self: start;
+}
+/* =============================================
+   PROCESS
+   ============================================= */
+.process-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+.process-item {
+  border-top: 2px solid var(--black);
+  padding-top: 20px;
+}
+.process-item .t-number {
+  margin-bottom: 16px;
+}
+.process-item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.process-item p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gray-600);
+}
+/* =============================================
+   CTA BLOCK
+   ============================================= */
+.cta-block {
+  background: var(--black);
+  color: var(--white);
+  padding: clamp(60px, 10vw, 120px) 0;
+  margin-top: var(--section-gap);
+}
+.cta-block .section-label-col .t-label {
+  color: var(--gray-500);
+}
+.cta-block .t-headline {
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.cta-block .t-body-lg {
+  color: var(--gray-500);
+  margin-bottom: 40px;
+  max-width: 460px;
+}
+.btn-white {
+  padding: 16px 36px;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s;
+}
+.btn-white:hover {
+  background: var(--gray-200);
+}
+.btn-white svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+.btn-white:hover svg {
+  transform: translateX(4px);
+}
+.cta-secondary {
+  margin-top: 20px;
+}
+.cta-secondary a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-500);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gray-600);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+  letter-spacing: 0.03em;
+}
+.cta-secondary a:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--gray-200);
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy {
+  font-size: 11px;
+  color: var(--gray-500);
+  letter-spacing: 0.04em;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--black);
+}
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 900px) {
+  .hero-meta { grid-column: 1 / 8; }
+  .hero-cta-area { grid-column: 1 / -1; margin-top: 32px; }
+  .section-label-col { grid-column: 1 / -1; margin-bottom: 24px; }
+  .section-content-col { grid-column: 1 / 10; }
+  .section-content-wide { grid-column: 1 / -1; }
+  .service-num { grid-column: 1 / 2; }
+  .service-name { grid-column: 2 / 7; }
+  .service-desc { grid-column: 7 / 13; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .hero-meta { grid-column: 1 / -1; }
+  .hero-meta p { max-width: 100%; }
+  .section-content-col { grid-column: 1 / -1; }
+  .service-num { display: none; }
+  .service-name { grid-column: 1 / -1; margin-bottom: 8px; }
+  .service-desc { grid-column: 1 / -1; }
+  .service-item:hover {
+    margin-left: calc(-1 * var(--grid-margin));
+    margin-right: calc(-1 * var(--grid-margin));
+    padding-left: var(--grid-margin);
+    padding-right: var(--grid-margin);
+  }
+  .process-grid { grid-template-columns: 1fr; }
+  .cta-block .section-content-col { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Krist Pjetraj</a>
+  <ul class="nav-links">
+    <li><a href="#about">Über mich</a></li>
+    <li><a href="#services">Angebot</a></li>
+    <li><a href="#process">Ablauf</a></li>
+    <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero grid-wrapper">
+  <div class="grid">
+    <div class="hero-rule"></div>
+    <div class="hero-title t-display">
+      <span class="line"><span style="--d:0.15s">Expertise</span></span>
+      <span class="line"><span style="--d:0.3s">sichtbar</span></span>
+      <span class="line"><span style="--d:0.45s">machen.</span></span>
+    </div>
+    <div class="hero-meta r r-d2">
+      <p>Ich verwandle die Expertise von CEOs und Gründern in LinkedIn Content, der Kunden anzieht. Strategisch, authentisch und ohne dass du selbst schreiben musst.</p>
+    </div>
+    <div class="hero-cta-area r r-d3">
+      <a href="https://calendly.com/krist-pjetraj/30min" class="btn btn-primary" target="_blank" rel="noopener">
+        Gespräch buchen
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="grid-wrapper">
+  <div class="grid">
+    <div class="section-rule r"></div>
+    <div class="section-label-col r">
+      <p class="t-label">Über mich</p>
+    </div>
+    <div class="section-content-col r r-d1">
+      <div class="about-text t-body-lg">
+        <p><strong>Betriebsökonom mit Kreativdrang.</strong> Ich denke in Zahlen, aber lebe für Geschichten. Jedes Unternehmen hat eine Story, die hinter Produkten und Prozessen versteckt liegt. Meine Aufgabe: sie sichtbar machen.</p>
+        <p>Ich komme aus dem B2B Marketing, kenne die Pain Points, Entscheidungswege und die Sprache. Heute helfe ich CEOs, Gründern und Führungskräften, <strong>ihre persönliche Marke auf LinkedIn aufzubauen</strong>, ohne dass sie stundenlang Content produzieren müssen.</p>
+        <p>Von der Strategie bis zum fertigen Post. Authentisch, nie nach Agentur klingend, immer auf dein Business zugeschnitten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="grid-wrapper">
+  <div class="grid">
+    <div class="section-rule r"></div>
+    <div class="section-label-col r">
+      <p class="t-label">Angebot</p>
+    </div>
+    <div class="section-content-col r r-d1">
+      <h2 class="t-headline" style="margin-bottom: 0;">Drei Leistungen,<br>ein Ziel.</h2>
+    </div>
+  </div>
+  <div class="grid" style="margin-top: clamp(32px, 5vw, 56px);">
+    <div class="service-item r">
+      <span class="service-num">01</span>
+      <div class="service-name">
+        <h3 class="t-subhead">LinkedIn Ghostwriting</h3>
+      </div>
+      <div class="service-desc">
+        <p class="t-body">Ich schreibe deine LinkedIn Posts. Basierend auf deiner Expertise, in deiner Stimme. Du gibst den Input, ich mache daraus Content, der Reichweite und Anfragen generiert.</p>
+      </div>
+    </div>
+    <div class="service-item r r-d1">
+      <span class="service-num">02</span>
+      <div class="service-name">
+        <h3 class="t-subhead">Content Strategie</h3>
+      </div>
+      <div class="service-desc">
+        <p class="t-body">Keine Posts ins Blaue. Ich entwickle eine Strategie mit klaren Themensäulen, Zielgruppen-Mapping und einem Redaktionsplan, der auf deine Business-Ziele einzahlt.</p>
+      </div>
+    </div>
+    <div class="service-item r r-d2">
+      <span class="service-num">03</span>
+      <div class="service-name">
+        <h3 class="t-subhead">Personal Branding</h3>
+      </div>
+      <div class="service-desc">
+        <p class="t-body">Dein LinkedIn Profil wird zum Magneten. Ich optimiere Headline, About Section und den gesamten Auftritt, damit deine Expertise auf den ersten Blick überzeugt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="grid-wrapper">
+  <div class="grid">
+    <div class="section-rule r"></div>
+    <div class="section-label-col r">
+      <p class="t-label">Ablauf</p>
+    </div>
+    <div class="section-content-col r r-d1">
+      <h2 class="t-headline">So arbeiten<br>wir zusammen.</h2>
+    </div>
+    <div class="process-grid r r-d2">
+      <div class="process-item">
+        <div class="t-number">01</div>
+        <h3>Kennenlernen</h3>
+        <p>Kurzes Gespräch. Kein Pitch, kein Druck. Wir schauen, wo du stehst und was dein Ziel ist.</p>
+      </div>
+      <div class="process-item">
+        <div class="t-number">02</div>
+        <h3>Strategie</h3>
+        <p>Analyse deines Profils, deiner Zielgruppe und des Marktes. Daraus entsteht deine massgeschneiderte Content-Strategie.</p>
+      </div>
+      <div class="process-item">
+        <div class="t-number">03</div>
+        <h3>Content</h3>
+        <p>Du gibst kurze Inputs. Ich schreibe. Jeder Post wird von dir freigegeben, bevor er live geht.</p>
+      </div>
+      <div class="process-item">
+        <div class="t-number">04</div>
+        <h3>Wachstum</h3>
+        <p>Laufende Optimierung basierend auf Performance. Mehr Sichtbarkeit, mehr Anfragen, mehr Impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="grid-wrapper">
+    <div class="grid">
+      <div class="section-label-col r">
+        <p class="t-label">Let's talk</p>
+      </div>
+      <div class="section-content-col r r-d1">
+        <h2 class="t-headline">Bereit, deine Expertise sichtbar zu machen?</h2>
+        <p class="t-body-lg">Kostenloses Erstgespräch. 30 Minuten. Ohne Verpflichtung.</p>
+        <a href="https://calendly.com/krist-pjetraj/30min" class="btn-white" target="_blank" rel="noopener">
+          Call buchen
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+        </a>
+        <div class="cta-secondary">
+          <a href="https://kpjetraj.kit.com/507101bf95" target="_blank" rel="noopener">Oder Newsletter abonnieren</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="grid-wrapper">
+  <div class="footer-grid">
+    <span class="footer-copy">&copy; 2026 Krist Pjetraj, Zürich</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:krist@pjetraj.com">Email</a></li>
+      <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Termin</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- SCROLL REVEAL -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('v');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+});
+</script>
+
+</body>
+</html>
