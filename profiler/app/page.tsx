@@ -10,11 +10,11 @@ interface Result {
 }
 
 const LOADING_STEPS = [
-  "Reading your profile…",
-  "Analysing positioning…",
-  "Rewriting your headline…",
-  "Drafting your About section…",
-  "Sending to your inbox…",
+  "Reading your profile...",
+  "Scoring headline and positioning...",
+  "Rewriting your About section...",
+  "Putting the email together...",
+  "Sending to your inbox...",
 ];
 
 export default function Home() {
@@ -105,19 +105,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Nav */}
       <header className="border-b border-gray-200 px-6 md:px-12 py-5 flex items-center justify-between">
         <span className="text-sm font-semibold tracking-tight uppercase">
           LinkedIn Audit
         </span>
-        <span className="text-sm text-gray-500">Free · No signup required</span>
+        <span className="text-sm text-gray-500">Free. No signup.</span>
       </header>
 
-      {/* Main */}
       <main className="flex-1 px-6 md:px-12 py-16 md:py-24 max-w-6xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
 
-          {/* Left: copy */}
           <div>
             <p className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-6">
               Free Profile Audit
@@ -126,14 +123,14 @@ export default function Home() {
               Your LinkedIn profile is losing you clients.
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed mb-12">
-              Upload your profile PDF. Get an instant score. A ghostwriter-rewritten version lands in your inbox — completely free.
+              Upload your profile PDF. Get a score on screen. A ghostwriter-rewritten version lands in your inbox. Completely free.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-8 mb-14">
               {[
                 { n: "01", label: "Upload your LinkedIn profile PDF" },
-                { n: "02", label: "Get your score instantly on screen" },
-                { n: "03", label: "Full breakdown + rewrite hits your inbox" },
+                { n: "02", label: "Get your score on screen right away" },
+                { n: "03", label: "Full breakdown and rewrite hits your inbox" },
               ].map(({ n, label }) => (
                 <div key={n} className="flex items-start gap-5">
                   <span className="text-xs font-semibold text-gray-300 mt-1 shrink-0 w-6">{n}</span>
@@ -141,15 +138,37 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            <div className="border border-gray-200 p-6">
+              <p className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4">
+                How to get your LinkedIn PDF
+              </p>
+              <div className="space-y-3">
+                {[
+                  { n: "1", text: "Open your LinkedIn profile in a browser" },
+                  { n: "2", text: 'Click the "More" button just below your name and photo' },
+                  { n: "3", text: 'Select "Save to PDF" from the dropdown' },
+                  { n: "4", text: "Upload the file that downloads to your computer" },
+                ].map(({ n, text }) => (
+                  <div key={n} className="flex gap-3 items-start">
+                    <span className="shrink-0 w-5 h-5 bg-black text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                      {n}
+                    </span>
+                    <span className="text-sm text-gray-600">{text}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-gray-400 mt-4">
+                Only works on desktop. Mobile does not have the Save to PDF option.
+              </p>
+            </div>
           </div>
 
-          {/* Right: form / result */}
           <div>
             {status === "success" && result ? (
               <SuccessCard score={result.score} summary={result.summary} email={email} />
             ) : (
               <form onSubmit={handleSubmit} className="border border-gray-200 p-8 md:p-10 space-y-6">
-                {/* Mode toggle */}
                 <div className="flex border border-gray-200 w-fit">
                   {(["upload", "paste"] as const).map((m) => (
                     <button
@@ -167,7 +186,6 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Upload zone */}
                 {mode === "upload" ? (
                   <div
                     onDrop={onDrop}
@@ -197,9 +215,7 @@ export default function Home() {
                     ) : (
                       <div>
                         <p className="text-sm font-medium">Drop your LinkedIn PDF here</p>
-                        <p className="text-xs text-gray-500 mt-2">
-                          On LinkedIn: <span className="font-medium">More → Save to PDF</span>
-                        </p>
+                        <p className="text-xs text-gray-400 mt-2">or click to browse</p>
                       </div>
                     )}
                   </div>
@@ -207,13 +223,12 @@ export default function Home() {
                   <textarea
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder={"Paste your LinkedIn headline + About section here…"}
+                    placeholder="Paste your LinkedIn headline and About section here..."
                     rows={8}
                     className="w-full border border-gray-200 p-4 text-sm resize-none focus:outline-none focus:border-black placeholder:text-gray-400 font-sans"
                   />
                 )}
 
-                {/* Email */}
                 <input
                   type="email"
                   value={email}
@@ -222,12 +237,10 @@ export default function Home() {
                   className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-black placeholder:text-gray-400 font-sans"
                 />
 
-                {/* Error */}
                 {errorMsg && (
                   <p className="text-sm text-red-600">{errorMsg}</p>
                 )}
 
-                {/* Submit */}
                 <button
                   type="submit"
                   disabled={status === "loading"}
@@ -235,11 +248,11 @@ export default function Home() {
                 >
                   {status === "loading"
                     ? LOADING_STEPS[loadingStep]
-                    : "Analyse my profile →"}
+                    : "Audit my profile"}
                 </button>
 
-                <p className="text-xs text-gray-500 text-center">
-                  Your data is used solely to generate your audit. We never share it.
+                <p className="text-xs text-gray-400 text-center">
+                  Your data is only used to run the audit. Nothing is stored or shared.
                 </p>
               </form>
             )}
@@ -247,10 +260,9 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-gray-200 px-6 md:px-12 py-6 flex items-center justify-between text-xs text-gray-500">
         <span>© {new Date().getFullYear()} Krist Pjetraj</span>
-        <span>LinkedIn Ghostwriting Agency</span>
+        <span>LinkedIn Ghostwriting</span>
       </footer>
     </div>
   );
@@ -278,12 +290,12 @@ function SuccessCard({ score, summary, email }: { score: number; summary: string
       <p className="text-base text-gray-600 leading-relaxed">{summary}</p>
 
       <div className="border-t border-gray-200 pt-6">
-        <p className="text-sm font-semibold mb-1">Full breakdown + rewrite sent to:</p>
+        <p className="text-sm font-semibold mb-1">Full breakdown and rewrite sent to:</p>
         <p className="text-sm text-gray-500">{email}</p>
       </div>
 
       <p className="text-xs text-gray-400">
-        Check your spam folder if it doesn&apos;t arrive within a minute.
+        Check your spam folder if it does not arrive within a minute.
       </p>
     </div>
   );
