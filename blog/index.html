@@ -614,6 +614,19 @@ footer {
 
 .post{padding-left:max(var(--grid-margin),env(safe-area-inset-left,0px));padding-right:max(var(--grid-margin),env(safe-area-inset-right,0px))}
 nav .nav-logo-img{filter:none}
+
+.entries{display:flex;flex-direction:column;gap:28px;margin-top:40px}
+.entry{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:28px;align-items:center;text-decoration:none;color:var(--black);border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);padding:18px;background:var(--white);transition:transform .15s ease,box-shadow .15s ease}
+.entry:hover,.entry:focus-visible{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--black);outline:none}
+.thumb{position:relative;background:var(--gray-100);border:2px solid var(--black);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;gap:2px;padding:12px;max-width:100%}
+.tface{width:20%;height:auto}
+.thumb-tag{position:absolute;left:8px;top:8px;background:var(--red);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 6px}
+.entry p.entry-kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+.entry h2{font-family:var(--font-display);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.05;letter-spacing:-.015em;text-transform:uppercase;margin:0 0 10px}
+.entry p.ex{font-size:15px;line-height:1.6;color:var(--gray-700);margin:0 0 14px}
+.entry .more{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--red);padding-bottom:2px}
+@media (max-width:640px){.entry{grid-template-columns:1fr;gap:16px}}
+@media (prefers-reduced-motion:reduce){.entry{transition:none}}
 </style>
 </head>
 <body>
@@ -630,14 +643,24 @@ nav .nav-logo-img{filter:none}
 <main class="post"><div class="post-inner">
 <h1>Blog</h1>
 <p class="meta">Notizen zu Marketing, Messaging und LinkedIn</p>
-<div class="list-item"><h2><a href="levels-of-awareness.html">Warum dein Messaging nicht ankommt</a></h2><p>Schwartz’ fünf Stufen des Bewusstseins und warum eine Botschaft für alle selten funktioniert.</p></div>
+<div class="entries">
+<a class="entry" href="levels-of-awareness.html">
+<div class="thumb" aria-hidden="true"><svg class="tface" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 52 q5 -5 10 0 M53 52 q5 -5 10 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 66 q10 9 20 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="76" y="26" font-size="22" font-weight="800" fill="#E03C31" font-family="Archivo,Arial">♪</text><text x="84" y="40" font-size="16" font-weight="800" fill="#E03C31" font-family="Archivo,Arial">♪</text></svg><svg class="tface" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 44 l12 5 M65 44 l-12 5" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="55" r="3" fill="#0A0A0A"/><circle cx="58" cy="55" r="3" fill="#0A0A0A"/><path d="M40 72 q10 -8 20 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 38 q-6 10 0 14 q6 -4 0 -14z" fill="#E03C31" stroke="#0A0A0A" stroke-width="2.5"/></svg><svg class="tface" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="50" r="3" fill="#0A0A0A"/><circle cx="59" cy="50" r="3" fill="#0A0A0A"/><path d="M45 69 h10" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="70" y="28" font-size="30" font-weight="900" fill="#E03C31" font-family="Archivo,Arial">?</text></svg><svg class="tface" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 46 l10 1 M54 41 q6 -4 11 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="54" r="3" fill="#0A0A0A"/><circle cx="59" cy="54" r="3" fill="#0A0A0A"/><path d="M41 70 l18 -4" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="74" y="30" font-size="24" font-weight="900" fill="#E03C31" font-family="Archivo,Arial">!?</text></svg><svg class="tface" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="52" r="3" fill="#0A0A0A"/><circle cx="58" cy="52" r="3" fill="#0A0A0A"/><path d="M36 62 q14 16 28 0 z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M72 22 l6 7 l12 -14" fill="none" stroke="#E03C31" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="thumb-tag">5 Stufen</span></div>
+<div>
+<p class="entry-kicker">Messaging · 3 Min. Lesezeit</p>
+<h2>Warum dein Messaging nicht ankommt</h2>
+<p class="ex">Du kennst dein Produkt, deine Kunden aber noch nicht. Was Eugene Schwartz 1966 über die fünf Stufen des Bewusstseins geschrieben hat und wie du es heute nutzt.</p>
+<span class="more">Weiterlesen →</span>
+</div>
+</a>
+</div>
 </div></main>
 <footer class="grid-wrapper">
   <div class="footer-grid">
     <span class="footer-copy"><img src="data:image/png;base64,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" alt="KP" class="footer-logo-img"> &copy; 2026 Krist Pjetraj, Zürich</span>
     <ul class="footer-links">
       <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="mailto:hi@kristpjetraj.com">Email</a></li>
+      <li><a href="mailto:hi@kristpjetraj.com">E-Mail</a></li>
       <li><a href="datenschutz.html">Datenschutz</a></li>
       <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Termin</a></li>
     </ul>
