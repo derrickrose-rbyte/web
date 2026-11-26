@@ -637,6 +637,17 @@ footer {
 nav .nav-logo-img{filter:none}
 
 @media (min-width:761px){.comic{width:min(1040px,calc(100vw - 2*var(--grid-margin)));margin-left:50%;transform:translateX(-50%)}}
+
+/* PROMPT BOX */
+.prompt{border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);margin:48px 0 16px;background:var(--white)}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--black);color:var(--white);padding:10px 14px}
+.prompt-head span{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.copy{display:inline-flex;align-items:center;gap:8px;font:inherit;font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--white);color:var(--black);border:2px solid var(--white);padding:6px 10px;cursor:pointer}
+.copy:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+.copy:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.copy svg{width:16px;height:16px}
+.prompt pre{margin:0;padding:18px;white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.6;color:var(--black);background:var(--gray-100);max-height:none;overflow-x:auto}
+.prompt-hint{font-size:13px;color:var(--gray-500);margin-bottom:24px}
 </style>
 </head>
 <body>
@@ -686,6 +697,24 @@ nav .nav-logo-img{filter:none}
 <p>Die meisten Firmen schreiben eine Website und wollen damit alle fünf Gruppen gleichzeitig abholen. Das Ergebnis passt dann für niemanden richtig. Wer noch gar kein Problem sieht, versteht nicht, worum es geht. Wer kaufen will, kämpft sich durch Erklärungen, die er längst kennt.</p>
 <p>Mein Tipp: Ordne jede Seite, jede Anzeige und jeden Post genau einer Stufe zu. Und frag dich jedes Mal, was dein Leser an diesem Punkt schon weiss. Was er nicht weiss, kommt rein. Den Rest kannst du streichen.</p>
 
+<h2>Selbst ausprobieren</h2>
+<p>Kopier den Prompt in ChatGPT oder Claude, füll die Klammern aus, und du bekommst für jede Stufe eine eigene Botschaft für dein Angebot.</p>
+<div class="prompt"><div class="prompt-head"><span>Prompt zum Kopieren</span><button type="button" class="copy" data-target="prompt-levels" aria-label="Prompt kopieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg><span class="copy-label">Kopieren</span></button></div><pre id="prompt-levels">Du bist ein erfahrener Copywriter.
+
+Ich verkaufe: [Produkt oder Dienstleistung]
+An: [Zielgruppe, z. B. Geschäftsführer von KMU im Handwerk]
+Das Hauptproblem meiner Kunden: [Problem in einem Satz]
+
+Erstelle für jede der fünf Bewusstseinsstufen nach Eugene Schwartz (Unaware, Problem Aware, Solution Aware, Product Aware, Most Aware):
+1. Was die Person an diesem Punkt denkt, als ein Satz in ihren eigenen Worten
+2. Eine Hook für einen LinkedIn-Post oder eine Anzeige, maximal 15 Wörter
+3. Den passenden nächsten Schritt (Call to Action)
+
+Regeln:
+- Schreib einfach und konkret, ohne Fachjargon und ohne Übertreibungen.
+- Erfinde keine Zahlen, Studien oder Kundenreferenzen.
+- Gib das Ergebnis als Tabelle mit den Spalten Stufe, Gedanke, Hook, nächster Schritt aus.</pre></div>
+<p class="prompt-hint">Tipp: Je genauer du Zielgruppe und Problem beschreibst, desto brauchbarer wird das Ergebnis.</p>
 <div class="sources">
 <p><strong>Quellen</strong></p>
 <ul>
@@ -708,5 +737,16 @@ nav .nav-logo-img{filter:none}
     </ul>
   </div>
 </footer>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var pre=document.getElementById(btn.getAttribute('data-target'));
+    var label=btn.querySelector('.copy-label');
+    function done(){label.textContent='Kopiert';setTimeout(function(){label.textContent='Kopieren';},2000);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done();}catch(e){label.textContent='Text markiert';}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pre.innerText).then(done,fallback);}else{fallback();}
+  });
+});
+</script>
 </body>
 </html>
