@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warum dein Messaging nicht ankommt – Krist Pjetraj</title>
+<meta name="description" content="Schwartz’ fünf Stufen des Bewusstseins: Warum eine Botschaft für alle selten funktioniert.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Suisse+Int'l:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'SystemSans';
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FFFFFF;
+  --black: #0A0A0A;
+  --gray-100: #F5F5F3;
+  --gray-200: #EBEBEA;
+  --gray-300: #D4D4D0;
+  --gray-500: #8A8A85;
+  --gray-600: #6B6B66;
+  --gray-700: #4A4A47;
+  --red: #E03C31;
+
+  --font-display: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+  --font-body: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif;
+
+  --grid-margin: clamp(24px, 5vw, 80px);
+  --grid-gutter: clamp(16px, 2vw, 32px);
+  --section-gap: clamp(100px, 15vw, 200px);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* =============================================
+   GRID SYSTEM
+   ============================================= */
+.grid-wrapper {
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 var(--grid-gutter);
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.t-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.t-subhead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 2.5vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.t-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: var(--gray-700);
+}
+
+.t-body-lg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.65;
+  color: var(--gray-700);
+}
+
+.t-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(64px, 8vw, 96px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--gray-200);
+}
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+.r {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.r.v {
+  opacity: 1;
+  transform: translateY(0);
+}
+.r-d1 { transition-delay: 0.08s; }
+.r-d2 { transition-delay: 0.16s; }
+.r-d3 { transition-delay: 0.24s; }
+.r-d4 { transition-delay: 0.32s; }
+
+/* =============================================
+   NAV
+   ============================================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px var(--grid-margin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.nav-logo {
+  text-decoration: none;
+}
+.nav-logo-img {
+  height: 28px;
+  width: auto;
+  filter: invert(1);
+  mix-blend-mode: normal;
+}
+.footer-logo-img {
+  height: 20px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.nav-links a:hover {
+  opacity: 0.5;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(90px, 12vw, 140px);
+  padding-bottom: clamp(40px, 6vw, 80px);
+  position: relative;
+}
+.hero .grid {
+  align-items: end;
+}
+.hero-title {
+  grid-column: 1 / -1;
+  margin-bottom: 48px;
+}
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+}
+.hero-title .line span {
+  display: inline-block;
+  animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: var(--d, 0s);
+  transform: translateY(110%);
+}
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+.hero-meta {
+  grid-column: 1 / 6;
+}
+.hero-meta p {
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 400;
+  color: var(--gray-600);
+  line-height: 1.6;
+  max-width: 380px;
+}
+.hero-cta-area {
+  grid-column: 9 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.hero-rule {
+  grid-column: 1 / -1;
+  height: 2px;
+  background: var(--black);
+  margin-bottom: 32px;
+  transform-origin: left;
+  animation: ruleGrow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+  transform: scaleX(0);
+}
+@keyframes ruleGrow {
+  to { transform: scaleX(1); }
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.btn-primary {
+  padding: 16px 36px;
+  background: var(--black);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gray-700);
+}
+.btn-ghost {
+  color: var(--black);
+  padding: 8px 0;
+  border-bottom: 1.5px solid var(--black);
+}
+.btn-ghost:hover {
+  color: var(--gray-500);
+  border-color: var(--gray-500);
+}
+.btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* =============================================
+   SECTIONS
+   ============================================= */
+section {
+  padding-top: var(--section-gap);
+}
+
+.section-rule {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: var(--gray-300);
+  margin-bottom: clamp(32px, 5vw, 60px);
+}
+
+.section-label-col {
+  grid-column: 1 / 4;
+}
+
+.section-content-col {
+  grid-column: 5 / 11;
+}
+
+.section-content-wide {
+  grid-column: 4 / 12;
+}
+
+/* =============================================
+   ABOUT + PHOTO
+   ============================================= */
+.about-photo-col {
+  grid-column: 1 / 5;
+  position: relative;
+}
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+.about-photo:hover {
+  filter: grayscale(0%);
+}
+.about-label-col {
+  grid-column: 1 / 5;
+  margin-bottom: 40px;
+}
+.about-text-col {
+  grid-column: 6 / 11;
+  display: flex;
+  align-items: center;
+}
+.about-text p {
+  margin-bottom: 24px;
+}
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+.about-text strong {
+  font-weight: 500;
+  color: var(--black);
+}
+
+/* =============================================
+   SERVICES
+   ============================================= */
+.service-item {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 var(--grid-gutter);
+  padding: clamp(28px, 4vw, 48px) 0;
+  border-bottom: 1px solid var(--gray-300);
+  position: relative;
+  transition: background 0.3s;
+}
+.service-item:first-of-type {
+  border-top: 1px solid var(--gray-300);
+}
+.service-item:hover {
+  background: var(--gray-100);
+  margin-left: calc(-1 * var(--grid-margin));
+  margin-right: calc(-1 * var(--grid-margin));
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+.service-num {
+  grid-column: 1 / 2;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--gray-500);
+  padding-top: 4px;
+}
+.service-name {
+  grid-column: 2 / 6;
+  align-self: start;
+}
+.service-desc {
+  grid-column: 6 / 11;
+  align-self: start;
+}
+
+/* =============================================
+   PROCESS
+   ============================================= */
+.process-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+.process-item {
+  border-top: 2px solid var(--black);
+  padding-top: 20px;
+}
+.process-item .t-number {
+  margin-bottom: 16px;
+}
+.process-item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.process-item p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gray-600);
+}
+
+/* =============================================
+   CTA BLOCK
+   ============================================= */
+.cta-block {
+  background: var(--black);
+  color: var(--white);
+  padding: clamp(60px, 10vw, 120px) 0;
+  margin-top: var(--section-gap);
+}
+.cta-block .section-label-col .t-label {
+  color: var(--gray-500);
+}
+.cta-block .t-headline {
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.cta-block .t-body-lg {
+  color: var(--gray-500);
+  margin-bottom: 40px;
+  max-width: 460px;
+}
+.btn-white {
+  padding: 16px 36px;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s;
+}
+.btn-white:hover {
+  background: var(--gray-200);
+}
+.btn-white svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+.btn-white:hover svg {
+  transform: translateX(4px);
+}
+.cta-secondary {
+  margin-top: 20px;
+}
+.cta-secondary a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-500);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gray-600);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+  letter-spacing: 0.03em;
+}
+.cta-secondary a:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--gray-200);
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy {
+  font-size: 11px;
+  color: var(--gray-500);
+  letter-spacing: 0.04em;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--black);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 900px) {
+  .hero-meta { grid-column: 1 / 8; }
+  .hero-cta-area { grid-column: 1 / -1; margin-top: 32px; }
+  .section-label-col { grid-column: 1 / -1; margin-bottom: 24px; }
+  .section-content-col { grid-column: 1 / 10; }
+  .section-content-wide { grid-column: 1 / -1; }
+  .about-label-col { grid-column: 1 / -1; margin-bottom: 24px; }
+  .about-photo-col { grid-column: 1 / 5; }
+  .about-text-col { grid-column: 5 / 13; }
+  .service-num { grid-column: 1 / 2; }
+  .service-name { grid-column: 2 / 7; }
+  .service-desc { grid-column: 7 / 13; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  .hero-meta { grid-column: 1 / -1; }
+  .hero-meta p { max-width: 100%; }
+  .section-content-col { grid-column: 1 / -1; }
+  .about-label-col { grid-column: 1 / -1; }
+  .about-photo-col { grid-column: 1 / 7; margin-bottom: 32px; }
+  .about-text-col { grid-column: 1 / -1; }
+  .service-num { display: none; }
+  .service-name { grid-column: 1 / -1; margin-bottom: 8px; }
+  .service-desc { grid-column: 1 / -1; }
+  .service-item:hover {
+    margin-left: calc(-1 * var(--grid-margin));
+    margin-right: calc(-1 * var(--grid-margin));
+    padding-left: var(--grid-margin);
+    padding-right: var(--grid-margin);
+  }
+  .process-grid { grid-template-columns: 1fr; }
+  .cta-block .section-content-col { grid-column: 1 / -1; }
+}
+
+/* CONSENT BANNER */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--white);color:var(--black);border-top:2px solid var(--black);padding:20px var(--grid-margin);display:none;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px;line-height:1.5}
+.consent.show{display:flex}
+.consent p{max-width:640px;color:var(--gray-700)}
+.consent a{color:var(--black)}
+.consent-actions{display:flex;gap:10px}
+.consent button{font:inherit;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:10px 16px;border:2px solid var(--black);background:transparent;color:var(--black);cursor:pointer}
+.consent button.primary{background:var(--black);color:var(--white)}
+
+.post{padding-top:clamp(120px,14vw,180px);padding-bottom:clamp(60px,8vw,100px)}
+.post-inner{max-width:720px;margin:0 auto}
+.post h1{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,5.5vw,60px);line-height:1.02;letter-spacing:-.025em;text-transform:uppercase;margin-bottom:24px}
+.post h2{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.1;letter-spacing:-.01em;margin:56px 0 16px}
+.post p,.post li{font-size:17px;line-height:1.7;color:var(--gray-700);margin-bottom:18px}
+.post ul,.post ol{padding-left:22px;margin-bottom:18px}
+.post strong{color:var(--black)}
+.post .meta{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500);margin-bottom:32px}
+.post .sources{margin-top:56px;padding-top:24px;border-top:2px solid var(--black);font-size:14px}
+.post .sources li{font-size:14px}
+.post a{color:var(--black)}
+.back{font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--black)}
+.list-item{border-top:2px solid var(--black);padding:28px 0}
+.list-item h2{margin:0 0 10px;font-size:clamp(22px,3vw,30px)}
+.list-item a{text-decoration:none;color:var(--black)}
+</style>
+</head>
+<body>
+<nav style="mix-blend-mode:normal;background:var(--white);color:var(--black)">
+  <a href="#" class="nav-logo"><img src="data:image/png;base64,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" alt="KP" class="nav-logo-img"></a>
+  <ul class="nav-links" style="mix-blend-mode:normal">
+    <li><a href="../#about" style="color:var(--black)">Über mich</a></li>
+    <li><a href="../#services" style="color:var(--black)">Angebot</a></li>
+    <li><a href="../#process" style="color:var(--black)">Ablauf</a></li>
+    <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener" style="color:var(--black)">Kontakt</a></li>
+  </ul>
+</nav>
+
+<main class="post"><div class="post-inner">
+<p><a class="back" href="./">← Alle Beiträge</a></p>
+<div style="height:32px"></div>
+<h1>Warum dein Messaging nicht ankommt</h1>
+<p class="meta">Blog · Messaging</p>
+
+<p>Du kennst dein Produkt. Du weisst, was es kann, wer es braucht und warum es besser ist. Deshalb schreibst du Sätze wie „Unsere Software automatisiert Ihre Prozesse“ und denkst, das sei klar.</p>
+<p>Für deine Leser ist es das oft nicht. Die meisten wissen gar nicht, dass sie ein Problem haben. Andere wissen es, haben aber keine Lösung im Kopf. Wer deine Software zum ersten Mal sieht, versteht den Satz, sieht aber nicht, warum er ihn betrifft. Das nennt man den Wissensfluch: Wer alles weiss, kann sich kaum vorstellen, wie es ist, nichts davon zu wissen.</p>
+<p>Eugene Schwartz beschrieb dieses Problem 1966 in <em>Breakthrough Advertising</em>. Seine Antwort: Nicht alle Menschen stehen am gleichen Punkt. Deshalb muss die Botschaft zur Stufe passen, auf der jemand gerade steht.</p>
+
+<h2>Die fünf Stufen</h2>
+<p><strong>1. Unaware.</strong> Die Person merkt nicht, dass sie ein Problem hat. Ein Produktversprechen wirkt hier nicht. Du zeigst zuerst eine Situation, die sie wiedererkennt.</p>
+<p><strong>2. Problem Aware.</strong> Sie spürt den Schmerz, hat aber keine Lösung im Kopf. Hier geht es darum, das Problem genauer zu benennen, bevor du etwas verkaufst.</p>
+<p><strong>3. Solution Aware.</strong> Sie weiss, dass es Lösungen gibt, hat sich aber noch nicht entschieden. Jetzt zählen Unterschiede, Beweise und Vergleiche.</p>
+<p><strong>4. Product Aware.</strong> Sie kennt dein Produkt, ist aber noch nicht überzeugt. Sie braucht Vertrauen: Referenzen, Details und eine ehrliche Antwort auf ihre Einwände.</p>
+<p><strong>5. Most Aware.</strong> Sie ist bereit zu kaufen und braucht nur noch ein konkretes Angebot oder einen Grund, jetzt zu handeln.</p>
+<p>Die Stufen sind kein starres Raster. Jemand kann zwischen zwei Stufen stehen. Entscheidend ist: Jede Stufe braucht eine eigene erste Botschaft.</p>
+
+<h2>Ein Beispiel</h2>
+<p>Angenommen, du verkaufst Buchhaltungssoftware für Handwerksbetriebe. Dieses Beispiel ist erfunden, es zeigt nur das Prinzip.</p>
+<ul>
+<li><strong>Unaware:</strong> „Wie viel Zeit verlierst du jeden Monat mit Belegen, die niemand mehr findet?“ Der Schmerz kommt zuerst, das Produkt noch nicht.</li>
+<li><strong>Problem Aware:</strong> „Die Belege liegen in drei Ordnern, und der Treuhänder fragt jeden Monat dasselbe nach. Das ist ein Prozess-Problem, kein Zufall.“</li>
+<li><strong>Solution Aware:</strong> „Es gibt Buchhaltungslösungen für Handwerker. Viele sind für Büros gebaut. Hier ist der Unterschied zu drei gängigen Tools.“</li>
+<li><strong>Product Aware:</strong> „So sieht unser Belegprozess Schritt für Schritt aus. Zwei Betriebe aus deiner Branche haben ihren Monatsabschluss so von einem Tag auf eine Stunde verkürzt.“ Nur mit echten Referenzen.</li>
+<li><strong>Most Aware:</strong> „30 Tage kostenlos testen, Einrichtung inklusive.“</li>
+</ul>
+<p>Dieselbe Software, fünf verschiedene Einstiege.</p>
+
+<h2>Warum Teams das oft nicht tun</h2>
+<p>Viele schreiben eine einzige Seite und sprechen alle fünf Stufen gleichzeitig an. Dann passt der Text für niemanden. Der Unaware versteht die Lösung nicht, der Most Aware liest Erklärungen, die er nicht braucht.</p>
+<p>Ein einfacher erster Schritt: Ordne jede Seite, jede Anzeige und jeden Post genau einer Stufe zu. Frage dich, was der Leser an diesem Punkt schon weiss. Was er nicht weiss, gehört in den Text. Was er schon weiss, kannst du streichen.</p>
+
+<div class="sources">
+<p><strong>Quellen</strong></p>
+<ul>
+<li>Schwartz, E. (1966): <em>Breakthrough Advertising</em>. Das Original, bitte vor dem Zitieren selbst lesen.</li>
+<li><a href="https://selzee.com/eugene-schwartz-5-levels-of-awareness" target="_blank" rel="noopener">Selzee: The 5 Stages of Awareness, Schwartz's 5 Levels + Examples</a></li>
+<li><a href="https://maluure.com/en/wissen/eugene-schwartz-5-levels-of-awareness" target="_blank" rel="noopener">Maluure: Schwartz's 5 Levels of Awareness Explained</a></li>
+<li><a href="https://adlibrary.com/glossary/levels-of-awareness" target="_blank" rel="noopener">AdLibrary: Levels of Awareness, 5 Stages for Ad Copy</a></li>
+</ul>
+</div>
+
+</div></main>
+<footer class="grid-wrapper">
+  <div class="footer-grid">
+    <span class="footer-copy"><img src="data:image/png;base64,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" alt="KP" class="footer-logo-img"> &copy; 2026 Krist Pjetraj, Zürich</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:hi@kristpjetraj.com">Email</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+      <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Termin</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
