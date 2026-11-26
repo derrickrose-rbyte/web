@@ -734,17 +734,46 @@ nav .nav-logo-img{filter:none}
 
 .post h1,.post h2,.entry h2{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 </style>
+<style id="mnav-css">
+/* MOBILE NAV */
+.nav-burger{display:none;position:relative;z-index:2;width:44px;height:44px;margin-right:-10px;padding:0;border:0;background:none;cursor:pointer;color:var(--white);-webkit-tap-highlight-color:transparent}
+.nav-burger span{position:absolute;left:10px;right:10px;height:2px;background:currentColor;transition:transform .3s ease,opacity .2s ease}
+.nav-burger span:nth-child(1){top:15px}
+.nav-burger span:nth-child(2){top:21px}
+.nav-burger span:nth-child(3){top:27px}
+.nav-burger:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media (max-width:900px){
+  .nav-burger{display:block}
+  nav .nav-logo{position:relative;z-index:2}
+  nav.nav-open{mix-blend-mode:normal!important;background:var(--white)!important}
+  nav.nav-open .nav-logo-img{filter:none}
+  nav.nav-open .nav-burger{color:var(--black)}
+  nav.nav-open .nav-burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  nav.nav-open .nav-burger span:nth-child(2){opacity:0}
+  nav.nav-open .nav-burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  nav.nav-open .nav-links{display:flex;position:fixed;inset:0;z-index:1;flex-direction:column;gap:0;padding:96px var(--grid-margin) 40px;background:var(--white);overflow-y:auto;animation:mnavIn .25s ease}
+  nav.nav-open .nav-links li{border-bottom:2px solid var(--black)}
+  nav.nav-open .nav-links li:first-child{border-top:2px solid var(--black)}
+  nav.nav-open .nav-links a{display:block;padding:20px 0;font-family:var(--font-display);font-weight:800;font-size:clamp(26px,7vw,40px);letter-spacing:-.01em;line-height:1.05;color:var(--black)!important}
+  nav.nav-open .nav-links a:hover{opacity:1;color:var(--red)!important}
+  nav.nav-open .nav-links li:last-child a{color:var(--red)!important}
+}
+@keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.nav-burger span{transition:none}nav.nav-open .nav-links{animation:none}}
+body.nav-locked{overflow:hidden}
+</style>
 </head>
 <body>
 <nav style="mix-blend-mode:normal;background:var(--white);color:var(--black)">
   <a href="../" class="nav-logo" aria-label="Zur Startseite"><img src="data:image/png;base64,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" alt="KP" class="nav-logo-img"></a>
-  <ul class="nav-links" style="mix-blend-mode:normal">
+  <ul id="nav-menu" class="nav-links" style="mix-blend-mode:normal">
     <li><a href="../#about" style="color:var(--black)">Über mich</a></li>
     <li><a href="../#services" style="color:var(--black)">Angebot</a></li>
     <li><a href="../#process" style="color:var(--black)">Ablauf</a></li>
     <li><a href="./" style="color:var(--black)">Insights</a></li>
     <li><a href="../gespraech/" style="color:var(--black)">Erstgespräch</a></li>
   </ul>
+  <button type="button" class="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu" style="color:var(--black)"><span></span><span></span><span></span></button>
 </nav>
 
 <main class="post"><div class="post-inner">
@@ -900,6 +929,23 @@ document.querySelectorAll('.copy').forEach(function(btn){
   function save(v){ try{ localStorage.setItem('analytics-consent',v);}catch(e){} box.classList.remove('show'); document.body.style.paddingBottom=''; }
   document.getElementById('consent-yes').addEventListener('click',function(){ save('yes'); loadGA(); });
   document.getElementById('consent-no').addEventListener('click',function(){ save('no'); });
+})();
+</script>
+<script id="mnav-js">
+(function(){
+  var nav=document.querySelector('nav'); if(!nav) return;
+  var btn=nav.querySelector('.nav-burger'), list=nav.querySelector('.nav-links');
+  if(!btn||!list) return;
+  function set(open){
+    nav.classList.toggle('nav-open',open);
+    document.body.classList.toggle('nav-locked',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Menü schliessen':'Menü öffnen');
+  }
+  btn.addEventListener('click',function(){ set(!nav.classList.contains('nav-open')); });
+  list.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&nav.classList.contains('nav-open')){ set(false); btn.focus(); } });
+  window.matchMedia('(min-width:901px)').addEventListener('change',function(m){ if(m.matches) set(false); });
 })();
 </script>
 </body>
