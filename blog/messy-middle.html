@@ -684,6 +684,14 @@ nav .nav-logo-img{filter:none}
 .six span{font-size:14px;line-height:1.45;color:var(--gray-700)}
 @media (max-width:760px){.mm{grid-template-columns:1fr}.six{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.six{grid-template-columns:1fr}}
+/* CONSENT BANNER */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--white);color:var(--black);border-top:2px solid var(--black);padding:20px var(--grid-margin);display:none;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px;line-height:1.5}
+.consent.show{display:flex}
+.consent p{max-width:640px;color:var(--gray-700)}
+.consent a{color:var(--black)}
+.consent-actions{display:flex;gap:10px}
+.consent button{font:inherit;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:10px 16px;border:2px solid var(--black);background:transparent;color:var(--black);cursor:pointer}
+.consent button.primary{background:var(--black);color:var(--white)}
 </style>
 </head>
 <body>
@@ -693,7 +701,7 @@ nav .nav-logo-img{filter:none}
     <li><a href="../#about" style="color:var(--black)">Über mich</a></li>
     <li><a href="../#services" style="color:var(--black)">Angebot</a></li>
     <li><a href="../#process" style="color:var(--black)">Ablauf</a></li>
-    <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener" style="color:var(--black)">Kontakt</a></li>
+    <li><a href="../gespraech/" style="color:var(--black)">Erstgespräch</a></li>
   </ul>
 </nav>
 
@@ -786,7 +794,7 @@ Regeln:
       <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="mailto:hi@kristpjetraj.com">E-Mail</a></li>
       <li><a href="datenschutz.html">Datenschutz</a></li>
-      <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Termin</a></li>
+      <li><a href="../gespraech/">Erstgespräch</a></li>
     </ul>
   </div>
 </footer>
@@ -800,6 +808,35 @@ document.querySelectorAll('.copy').forEach(function(btn){
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pre.innerText).then(done,fallback);}else{fallback();}
   });
 });
+</script>
+<!-- CONSENT -->
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <p>Ich nutze Google Analytics, um zu sehen, welche Seiten nützlich sind. Das Tracking startet erst, wenn du zustimmst. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-no">Nur notwendige</button>
+    <button type="button" id="consent-yes" class="primary">Zustimmen</button>
+  </div>
+</div>
+<script>
+(function(){
+  var GA='G-PG13SGCCNB';
+  function loadGA(){
+    var s=document.createElement('script');
+    s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date()); gtag('config',GA,{anonymize_ip:true});
+  }
+  var box=document.getElementById('consent');
+  var choice=null;
+  try{ choice=localStorage.getItem('analytics-consent'); }catch(e){}
+  if(choice==='yes'){ loadGA(); }
+  else if(choice===null){ box.classList.add('show'); document.body.style.paddingBottom=box.offsetHeight+'px'; }
+  function save(v){ try{ localStorage.setItem('analytics-consent',v);}catch(e){} box.classList.remove('show'); document.body.style.paddingBottom=''; }
+  document.getElementById('consent-yes').addEventListener('click',function(){ save('yes'); loadGA(); });
+  document.getElementById('consent-no').addEventListener('click',function(){ save('no'); });
+})();
 </script>
 </body>
 </html>

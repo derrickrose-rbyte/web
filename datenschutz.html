@@ -13,6 +13,14 @@ h2{font-size:18px;margin:36px 0 8px}
 p,li{color:#4A4A47}
 .unused{border:2px solid #E03C31;color:#0A0A0A;padding:12px 14px;font-size:14px;margin:20px 0}
 a{color:#0A0A0A}
+/* CONSENT BANNER */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--white);color:var(--black);border-top:2px solid var(--black);padding:20px var(--grid-margin);display:none;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px;line-height:1.5}
+.consent.show{display:flex}
+.consent p{max-width:640px;color:var(--gray-700)}
+.consent a{color:var(--black)}
+.consent-actions{display:flex;gap:10px}
+.consent button{font:inherit;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:10px 16px;border:2px solid var(--black);background:transparent;color:var(--black);cursor:pointer}
+.consent button.primary{background:var(--black);color:var(--white)}
 </style>
 </head>
 <body>
@@ -34,13 +42,16 @@ a{color:#0A0A0A}
 <h2>4. Externe Dienste und Links</h2>
 <p>Auf dieser Seite sind Links zu Calendly (Terminbuchung), LinkedIn und dem Newsletter-Anbieter kit.com eingebunden. Beim Anklicken gelten die Datenschutzbestimmungen der jeweiligen Anbieter. Die Schriftarten werden über Google Fonts geladen.</p>
 
-<h2>5. Newsletter</h2>
+<h2>5. Terminbuchung mit Calendly</h2>
+<p>Auf der Seite „Erstgespräch“ ist der Terminkalender von Calendly (Calendly LLC, USA) eingebunden. Beim Aufruf dieser Seite lädt dein Browser Inhalte von Calendly, dabei wird unter anderem deine IP-Adresse übertragen. Wenn du einen Termin buchst, verarbeitet Calendly die Angaben, die du dort eingibst, zum Beispiel Name, E-Mail-Adresse und Termin. Es gelten zusätzlich die Datenschutzbestimmungen von Calendly.</p>
+
+<h2>6. Newsletter</h2>
 <p>Für den Newsletter gibst du freiwillig deine E-Mail-Adresse an. Der Versand erfolgt über kit.com. Du kannst dich jederzeit über den Abmelde-Link in jeder E-Mail abmelden.</p>
 
-<h2>6. Deine Rechte</h2>
+<h2>7. Deine Rechte</h2>
 <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner Daten sowie auf Datenübertragbarkeit und Widerspruch. Wende dich dafür an <a href="mailto:hi@kristpjetraj.com">hi@kristpjetraj.com</a>. Zusätzlich kannst du dich bei der zuständigen Aufsichtsbehörde beschweren (in der Schweiz: EDÖB).</p>
 
-<h2>7. Stand</h2>
+<h2>8. Stand</h2>
 <p>Stand: November 2026. Änderungen dieser Datenschutzerklärung werden auf dieser Seite veröffentlicht.</p>
 </main>
 <footer class="grid-wrapper">
@@ -50,9 +61,38 @@ a{color:#0A0A0A}
       <li><a href="https://www.linkedin.com/in/kristpjetraj/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="mailto:hi@kristpjetraj.com">E-Mail</a></li>
       <li><a href="datenschutz.html">Datenschutz</a></li>
-      <li><a href="https://calendly.com/krist-pjetraj/30min" target="_blank" rel="noopener">Termin</a></li>
+      <li><a href="gespraech/">Erstgespräch</a></li>
     </ul>
   </div>
 </footer>
+<!-- CONSENT -->
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <p>Ich nutze Google Analytics, um zu sehen, welche Seiten nützlich sind. Das Tracking startet erst, wenn du zustimmst. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-no">Nur notwendige</button>
+    <button type="button" id="consent-yes" class="primary">Zustimmen</button>
+  </div>
+</div>
+<script>
+(function(){
+  var GA='G-PG13SGCCNB';
+  function loadGA(){
+    var s=document.createElement('script');
+    s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date()); gtag('config',GA,{anonymize_ip:true});
+  }
+  var box=document.getElementById('consent');
+  var choice=null;
+  try{ choice=localStorage.getItem('analytics-consent'); }catch(e){}
+  if(choice==='yes'){ loadGA(); }
+  else if(choice===null){ box.classList.add('show'); document.body.style.paddingBottom=box.offsetHeight+'px'; }
+  function save(v){ try{ localStorage.setItem('analytics-consent',v);}catch(e){} box.classList.remove('show'); document.body.style.paddingBottom=''; }
+  document.getElementById('consent-yes').addEventListener('click',function(){ save('yes'); loadGA(); });
+  document.getElementById('consent-no').addEventListener('click',function(){ save('no'); });
+})();
+</script>
 </body>
 </html>
