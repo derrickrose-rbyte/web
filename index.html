@@ -229,6 +229,8 @@ nav {
 .hero-title .line {
   display: block;
   overflow: hidden;
+  padding-top: 0.1em;
+  margin-top: -0.1em;
 }
 .hero-title .line span {
   display: inline-block;
@@ -812,8 +814,8 @@ document.addEventListener('DOMContentLoaded', () => {
   var choice=null;
   try{ choice=localStorage.getItem('analytics-consent'); }catch(e){}
   if(choice==='yes'){ loadGA(); }
-  else if(choice===null){ box.classList.add('show'); }
-  function save(v){ try{ localStorage.setItem('analytics-consent',v);}catch(e){} box.classList.remove('show'); }
+  else if(choice===null){ box.classList.add('show'); document.body.style.paddingBottom=box.offsetHeight+'px'; }
+  function save(v){ try{ localStorage.setItem('analytics-consent',v);}catch(e){} box.classList.remove('show'); document.body.style.paddingBottom=''; }
   document.getElementById('consent-yes').addEventListener('click',function(){ save('yes'); loadGA(); });
   document.getElementById('consent-no').addEventListener('click',function(){ save('no'); });
 })();
