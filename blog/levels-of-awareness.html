@@ -611,11 +611,37 @@ footer {
 .list-item{border-top:2px solid var(--black);padding:28px 0}
 .list-item h2{margin:0 0 10px;font-size:clamp(22px,3vw,30px)}
 .list-item a{text-decoration:none;color:var(--black)}
+
+/* COMIC */
+.comic{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:40px 0 12px}
+.panel{border:3px solid var(--black);background:var(--white);box-shadow:5px 5px 0 var(--black);padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel .tag{align-self:flex-start;background:var(--black);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px}
+.panel.buy .tag{background:var(--red)}
+.panel .face{display:block;width:100%;max-width:110px;margin:0 auto}
+.bubble{position:relative;border:2.5px solid var(--black);border-radius:16px;padding:9px 10px;font-family:var(--font-display);font-weight:700;font-size:14px;line-height:1.25;color:var(--black);background:var(--white);margin-top:4px}
+.bubble::before{content:"";position:absolute;top:-10px;left:22px;width:14px;height:14px;background:var(--white);border-left:2.5px solid var(--black);border-top:2.5px solid var(--black);transform:rotate(45deg)}
+.panel .say{font-size:12px;line-height:1.4;color:var(--gray-600);margin:auto 0 0;padding-top:8px;border-top:1px dashed var(--gray-300)}
+.panel .say b{color:var(--black)}
+.comic-caption{font-size:13px;color:var(--gray-500);text-align:center;margin-bottom:24px}
+@media (max-width:760px){
+  .comic{grid-template-columns:1fr}
+  .panel{display:grid;grid-template-columns:84px minmax(0,1fr);grid-template-areas:"tag tag" "face bubble" "say say";align-items:center;column-gap:14px}
+  .panel .tag{grid-area:tag}
+  .panel .face{grid-area:face;max-width:84px}
+  .panel .bubble{grid-area:bubble}
+  .panel .bubble::before{top:calc(50% - 7px);left:-9px;transform:rotate(-45deg)}
+  .panel .say{grid-area:say}
+}
+
+.post{padding-left:max(var(--grid-margin),env(safe-area-inset-left,0px));padding-right:max(var(--grid-margin),env(safe-area-inset-right,0px))}
+nav .nav-logo-img{filter:none}
+
+@media (min-width:761px){.comic{width:min(1040px,calc(100vw - 2*var(--grid-margin)));margin-left:50%;transform:translateX(-50%)}}
 </style>
 </head>
 <body>
 <nav style="mix-blend-mode:normal;background:var(--white);color:var(--black)">
-  <a href="#" class="nav-logo"><img src="data:image/png;base64,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" alt="KP" class="nav-logo-img"></a>
+  <a href="../" class="nav-logo" aria-label="Zur Startseite"><img src="data:image/png;base64,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" alt="KP" class="nav-logo-img"></a>
   <ul class="nav-links" style="mix-blend-mode:normal">
     <li><a href="../#about" style="color:var(--black)">Über mich</a></li>
     <li><a href="../#services" style="color:var(--black)">Angebot</a></li>
@@ -630,37 +656,40 @@ footer {
 <h1>Warum dein Messaging nicht ankommt</h1>
 <p class="meta">Blog · Messaging</p>
 
-<p>Du kennst dein Produkt. Du weisst, was es kann, wer es braucht und warum es besser ist. Deshalb schreibst du Sätze wie „Unsere Software automatisiert Ihre Prozesse“ und denkst, das sei klar.</p>
-<p>Für deine Leser ist es das oft nicht. Die meisten wissen gar nicht, dass sie ein Problem haben. Andere wissen es, haben aber keine Lösung im Kopf. Wer deine Software zum ersten Mal sieht, versteht den Satz, sieht aber nicht, warum er ihn betrifft. Das nennt man den Wissensfluch: Wer alles weiss, kann sich kaum vorstellen, wie es ist, nichts davon zu wissen.</p>
-<p>Eugene Schwartz beschrieb dieses Problem 1966 in <em>Breakthrough Advertising</em>. Seine Antwort: Nicht alle Menschen stehen am gleichen Punkt. Deshalb muss die Botschaft zur Stufe passen, auf der jemand gerade steht.</p>
+<p>Du kennst dein Produkt in- und auswendig. Was es kann, wer es braucht, warum es besser ist als der Rest. Also schreibst du so was wie „Unsere Software automatisiert Ihre Prozesse“. Klar, oder?</p>
+<p>Leider nicht. Die meisten, die das lesen, haben keine Ahnung, dass sie überhaupt ein Problem haben. Andere wissen es, suchen aber noch gar nicht nach einer Lösung. Der Satz wird gelesen, und dann ist er wieder weg.</p>
+<p>Das Phänomen hat sogar einen Namen: Wissensfluch. Wer zu viel weiss, kann sich schlicht nicht mehr vorstellen, wie es ist, nichts zu wissen. Und genau das passiert Gründern ständig mit ihrem eigenen Angebot.</p>
+<p>Neu ist das Problem nicht. Eugene Schwartz hat es 1966 in <em>Breakthrough Advertising</em> beschrieben. Das Buch ist heute, 60 Jahre später, so gesucht, dass Originalausgaben auf eBay für rund 600 Franken weggehen. Seine Idee ist simpel: Nicht alle stehen am gleichen Punkt. Also funktioniert auch nicht eine Botschaft für alle.</p>
 
 <h2>Die fünf Stufen</h2>
-<p><strong>1. Unaware.</strong> Die Person merkt nicht, dass sie ein Problem hat. Ein Produktversprechen wirkt hier nicht. Du zeigst zuerst eine Situation, die sie wiedererkennt.</p>
-<p><strong>2. Problem Aware.</strong> Sie spürt den Schmerz, hat aber keine Lösung im Kopf. Hier geht es darum, das Problem genauer zu benennen, bevor du etwas verkaufst.</p>
-<p><strong>3. Solution Aware.</strong> Sie weiss, dass es Lösungen gibt, hat sich aber noch nicht entschieden. Jetzt zählen Unterschiede, Beweise und Vergleiche.</p>
-<p><strong>4. Product Aware.</strong> Sie kennt dein Produkt, ist aber noch nicht überzeugt. Sie braucht Vertrauen: Referenzen, Details und eine ehrliche Antwort auf ihre Einwände.</p>
-<p><strong>5. Most Aware.</strong> Sie ist bereit zu kaufen und braucht nur noch ein konkretes Angebot oder einen Grund, jetzt zu handeln.</p>
-<p>Die Stufen sind kein starres Raster. Jemand kann zwischen zwei Stufen stehen. Entscheidend ist: Jede Stufe braucht eine eigene erste Botschaft.</p>
+<div class="comic" role="img" aria-label="Comic: fünf Personen auf fünf Stufen des Bewusstseins, von Läuft doch alles bis Wo kann ich starten"><div class="panel"><span class="tag">1 · Unaware</span><svg class="face" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 52 q5 -5 10 0 M53 52 q5 -5 10 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 66 q10 9 20 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="76" y="26" font-size="22" font-weight="800" fill="#E03C31" font-family="Archivo,Arial">♪</text><text x="84" y="40" font-size="16" font-weight="800" fill="#E03C31" font-family="Archivo,Arial">♪</text></svg><p class="bubble">Läuft doch alles.</p><p class="say"><b>Du:</b> Zeig die Situation.</p></div><div class="panel"><span class="tag">2 · Problem Aware</span><svg class="face" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 44 l12 5 M65 44 l-12 5" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="55" r="3" fill="#0A0A0A"/><circle cx="58" cy="55" r="3" fill="#0A0A0A"/><path d="M40 72 q10 -8 20 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 38 q-6 10 0 14 q6 -4 0 -14z" fill="#E03C31" stroke="#0A0A0A" stroke-width="2.5"/></svg><p class="bubble">Schon wieder Belege suchen. Das nervt.</p><p class="say"><b>Du:</b> Benenn das Problem.</p></div><div class="panel"><span class="tag">3 · Solution Aware</span><svg class="face" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="43" cy="50" r="3" fill="#0A0A0A"/><circle cx="59" cy="50" r="3" fill="#0A0A0A"/><path d="M45 69 h10" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="70" y="28" font-size="30" font-weight="900" fill="#E03C31" font-family="Archivo,Arial">?</text></svg><p class="bubble">Da gibt’s doch sicher ein Tool dafür?</p><p class="say"><b>Du:</b> Zeig den Unterschied.</p></div><div class="panel"><span class="tag">4 · Product Aware</span><svg class="face" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 46 l10 1 M54 41 q6 -4 11 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="54" r="3" fill="#0A0A0A"/><circle cx="59" cy="54" r="3" fill="#0A0A0A"/><path d="M41 70 l18 -4" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="74" y="30" font-size="24" font-weight="900" fill="#E03C31" font-family="Archivo,Arial">!?</text></svg><p class="bubble">Klingt gut. Aber klappt das auch bei uns?</p><p class="say"><b>Du:</b> Beweis es.</p></div><div class="panel buy"><span class="tag">5 · Most Aware</span><svg class="face" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="56" r="30" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="52" r="3" fill="#0A0A0A"/><circle cx="58" cy="52" r="3" fill="#0A0A0A"/><path d="M36 62 q14 16 28 0 z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M72 22 l6 7 l12 -14" fill="none" stroke="#E03C31" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="bubble">Wo kann ich starten?</p><p class="say"><b>Du:</b> Mach das Angebot.</p></div></div>
+<p class="comic-caption">Gleiches Produkt, fünf verschiedene Köpfe.</p>
+<p><strong>1. Unaware.</strong> Die Person merkt nicht, dass sie ein Problem hat. Mit deinem Produkt brauchst du hier gar nicht erst anzufangen. Zeig ihr zuerst eine Situation, in der sie sich wiedererkennt.</p>
+<p><strong>2. Problem Aware.</strong> Es nervt sie, aber sie hat keine Lösung im Kopf. Du gewinnst hier, wenn du das Problem besser beschreibst, als sie es selbst könnte.</p>
+<p><strong>3. Solution Aware.</strong> Sie weiss, dass es Lösungen gibt, und schaut sich um. Jetzt zählt, warum deine anders ist.</p>
+<p><strong>4. Product Aware.</strong> Sie kennt dich, ist aber noch skeptisch. Versprechen reichen hier nicht mehr. Sie will Beweise sehen: Referenzen, Zahlen, ehrliche Antworten auf ihre Einwände.</p>
+<p><strong>5. Most Aware.</strong> Sie will kaufen. Mach es ihr leicht: klares Angebot, klarer nächster Schritt.</p>
+<p>Die Grenzen sind fliessend, und niemand trägt ein Schild um den Hals. Aber jede Stufe braucht eine andere erste Botschaft.</p>
 
 <h2>Ein Beispiel</h2>
-<p>Angenommen, du verkaufst Buchhaltungssoftware für Handwerksbetriebe. Dieses Beispiel ist erfunden, es zeigt nur das Prinzip.</p>
+<p>Sagen wir, du verkaufst Buchhaltungssoftware für Handwerksbetriebe. Das Beispiel ist erfunden, es geht nur ums Prinzip.</p>
 <ul>
-<li><strong>Unaware:</strong> „Wie viel Zeit verlierst du jeden Monat mit Belegen, die niemand mehr findet?“ Der Schmerz kommt zuerst, das Produkt noch nicht.</li>
+<li><strong>Unaware:</strong> „Wie viele Stunden gehen bei dir jeden Monat für Belege drauf, die keiner mehr findet?“ Erst der Schmerz, das Produkt kommt noch gar nicht vor.</li>
 <li><strong>Problem Aware:</strong> „Die Belege liegen in drei Ordnern, und der Treuhänder fragt jeden Monat dasselbe nach. Die Ursache liegt im Ablauf.“</li>
-<li><strong>Solution Aware:</strong> „Es gibt Buchhaltungslösungen für Handwerker. Viele sind für Büros gebaut. Hier ist der Unterschied zu drei gängigen Tools.“</li>
-<li><strong>Product Aware:</strong> „So sieht unser Belegprozess Schritt für Schritt aus. Zwei Betriebe aus deiner Branche haben ihren Monatsabschluss so von einem Tag auf eine Stunde verkürzt.“ Nur mit echten Referenzen.</li>
+<li><strong>Solution Aware:</strong> „Es gibt Buchhaltungslösungen für Handwerker. Viele sind fürs Büro gebaut. So unterscheiden wir uns von drei gängigen Tools.“</li>
+<li><strong>Product Aware:</strong> „So läuft unser Belegprozess Schritt für Schritt. Und so hat ein Betrieb aus deiner Branche seinen Monatsabschluss verkürzt.“ Natürlich nur mit echten Referenzen.</li>
 <li><strong>Most Aware:</strong> „30 Tage kostenlos testen, Einrichtung inklusive.“</li>
 </ul>
-<p>Dieselbe Software, fünf verschiedene Einstiege.</p>
+<p>Gleiche Software. Fünf komplett verschiedene Einstiege.</p>
 
-<h2>Warum Teams das oft nicht tun</h2>
-<p>Viele schreiben eine einzige Seite und sprechen alle fünf Stufen gleichzeitig an. Dann passt der Text für niemanden. Der Unaware versteht die Lösung nicht, der Most Aware liest Erklärungen, die er nicht braucht.</p>
-<p>Ein einfacher erster Schritt: Ordne jede Seite, jede Anzeige und jeden Post genau einer Stufe zu. Frage dich, was der Leser an diesem Punkt schon weiss. Was er nicht weiss, gehört in den Text. Was er schon weiss, kannst du streichen.</p>
+<h2>Wo es schiefgeht</h2>
+<p>Die meisten Firmen schreiben eine Website und wollen damit alle fünf Gruppen gleichzeitig abholen. Das Ergebnis passt dann für niemanden richtig. Wer noch gar kein Problem sieht, versteht nicht, worum es geht. Wer kaufen will, kämpft sich durch Erklärungen, die er längst kennt.</p>
+<p>Mein Tipp: Ordne jede Seite, jede Anzeige und jeden Post genau einer Stufe zu. Und frag dich jedes Mal, was dein Leser an diesem Punkt schon weiss. Was er nicht weiss, kommt rein. Den Rest kannst du streichen.</p>
 
 <div class="sources">
 <p><strong>Quellen</strong></p>
 <ul>
-<li>Schwartz, E. (1966): <em>Breakthrough Advertising</em>. Das Original, bitte vor dem Zitieren selbst lesen.</li>
+<li>Schwartz, E. (1966): <em>Breakthrough Advertising</em>.</li>
 <li><a href="https://selzee.com/eugene-schwartz-5-levels-of-awareness" target="_blank" rel="noopener">Selzee: The 5 Stages of Awareness, Schwartz's 5 Levels + Examples</a></li>
 <li><a href="https://maluure.com/en/wissen/eugene-schwartz-5-levels-of-awareness" target="_blank" rel="noopener">Maluure: Schwartz's 5 Levels of Awareness Explained</a></li>
 <li><a href="https://adlibrary.com/glossary/levels-of-awareness" target="_blank" rel="noopener">AdLibrary: Levels of Awareness, 5 Stages for Ad Copy</a></li>
